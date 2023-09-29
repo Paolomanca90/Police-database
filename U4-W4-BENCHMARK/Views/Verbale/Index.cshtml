@@ -1,0 +1,51 @@
+﻿@using U4_W4_BENCHMARK.Models
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@if(TempData["OK"] != null)
+            {
+                <div class="alert alert-primary w-25 mx-auto text-center m-4">@TempData["Ok"]</div>
+            }
+
+<div class="d-flex w-100 min-vh-100 border border-3 border-secondary">
+    <aside class="d-flex flex-column justify-content-center p-5 bg-secondary">
+    </aside>
+    <section class="w-100 pb-5 mx-3">
+        <div class="d-flex justify-content-between py-3 align-items-center">
+            <h1>Elenco verbali</h1>
+            @Html.ActionLink("Nuovo verbale", "Create", "Verbele", new { @class = "btn btn-secondary fw-semibold h-50" })
+        </div>
+        <table class="table table-bordered">
+            <thead class="text-bg-secondary">
+                <tr>
+                    <th>Trasgressore</th>
+                    <th>Data Violazione</th>
+                    <th>Data Verbale</th>
+                    <th>Indirizzo Violazione</th>
+                    <th>Importo</th>
+                    <th>Nominativo Agente</th>
+                    <th>Violazione</th>
+                    <th>Punti decurtati</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Verbale v in Model)
+                {
+                    <tr>
+                        <td>@v.Trasgressore</td>
+                        <td>@v.DataViolazione.ToShortDateString()</td>
+                        <td>@v.DataVerbale.ToShortDateString()</td>
+                        <td>@v.IndirizzoViolazione</td>
+                        <td>@v.Importo.ToString("C")</td>
+                        <td>@v.NominativoAgente</td>
+                        <td>@v.Violazione</td>
+                        <td>@v.DecurtamentoPunti</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </section>
+</div>
+

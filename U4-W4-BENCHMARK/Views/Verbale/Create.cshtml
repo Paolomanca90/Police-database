@@ -1,0 +1,90 @@
+﻿@model U4_W4_BENCHMARK.Models.Verbale
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2 class="text-center">Nuovo Verbale</h2>
+
+@if (ViewBag.Messaggio != null)
+{
+    <div class="alert alert-danger w-25 mx-auto text-center m-4">ViewBag.Messaggio</div>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal w-25 p-5 border border-3 rounded border-secondary mx-auto">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group mb-3">
+            @Html.LabelFor(model => model.DataViolazione, htmlAttributes: new { @class = "control-label fw-bold" })
+            <div>
+                @Html.EditorFor(model => model.DataViolazione, new { htmlAttributes = new { @class = "form-control", type="date" } })
+                @Html.ValidationMessageFor(model => model.DataViolazione, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group mb-3">
+            @Html.LabelFor(model => model.IndirizzoViolazione, htmlAttributes: new { @class = "control-label fw-bold" })
+            <div>
+                @Html.EditorFor(model => model.IndirizzoViolazione, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.IndirizzoViolazione, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group mb-3">
+            @Html.LabelFor(model => model.NominativoAgente, htmlAttributes: new { @class = "control-label fw-bold" })
+            <div>
+                @Html.EditorFor(model => model.NominativoAgente, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NominativoAgente, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group mb-3">
+            @Html.LabelFor(model => model.DataVerbale, htmlAttributes: new { @class = "control-label fw-bold" })
+            <div>
+                @Html.EditorFor(model => model.DataVerbale, new { htmlAttributes = new { @class = "form-control", type="date" } })
+                @Html.ValidationMessageFor(model => model.DataVerbale, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group mb-3">
+            @Html.LabelFor(model => model.Importo, htmlAttributes: new { @class = "control-label fw-bold" })
+            <div>
+                @Html.EditorFor(model => model.Importo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Importo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group mb-3">
+            @Html.LabelFor(model => model.DecurtamentoPunti, htmlAttributes: new { @class = "control-label fw-bold" })
+            <div>
+                @Html.EditorFor(model => model.DecurtamentoPunti, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DecurtamentoPunti, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group mb-3">
+            @Html.LabelFor(model => model.Trasgressore, htmlAttributes: new { @class = "control-label fw-bold" })
+            <div>
+                @Html.DropDownListFor(model => model.Trasgressore, new SelectList(ViewBag.ListaAnagrafica, "Value", "Text"), "- Seleziona Trasgressore -", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Trasgressore, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group mb-4">
+            @Html.LabelFor(model => model.Violazione, htmlAttributes: new { @class = "control-label fw-bold" })
+            <div>
+                @Html.DropDownListFor(model => model.Violazione, new SelectList(ViewBag.Violazioni, "Value", "Text"), "- Seleziona Violazione -", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Violazione, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="text-center">
+                <input type="submit" value="Aggiungi" class="btn btn-secondary w-75 fw-bold" />
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,145 @@
+﻿@using U4_W4_BENCHMARK.Models
+
+@{
+    ViewBag.Title = "Registro";
+    List<VerbaliTotali> lista = ViewBag.VerbaliTrasgressore as List<VerbaliTotali>;
+    List<PuntiTotali> punti = ViewBag.PuntiTrasgressore as List<PuntiTotali>;
+    List<Over10> over = ViewBag.OverPunti as List<Over10>;
+    List<MaxiMulte> maxi = ViewBag.MaxiMulte as List<MaxiMulte>;
+}
+<div class="min-vh-100">
+    <div class="accordion mb-3" id="accordionExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button fs-5 fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Verbali per anagrafica
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <table class="table table-bordered">
+                        <thead class="text-bg-secondary">
+                            <tr>
+                                <th>Cognome</th>
+                                <th>Nome</th>
+                                <th>Numero Verbali</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (VerbaliTotali v in lista)
+                            {
+                                <tr>
+                                    <td>@v.Cognome</td>
+                                    <td>@v.Nome</td>
+                                    <td>@v.Totale</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="accordion mb-3" id="accordionExample1">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button fs-5 fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
+                    Punti per anagrafica
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample1">
+                <div class="accordion-body">
+                    <table class="table table-bordered">
+                        <thead class="text-bg-secondary">
+                            <tr>
+                                <th>Cognome</th>
+                                <th>Nome</th>
+                                <th>Punti Totali</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (PuntiTotali v in punti)
+                            {
+                                <tr>
+                                    <td>@v.Cognome</td>
+                                    <td>@v.Nome</td>
+                                    <td>@v.Totale</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="accordion mb-3" id="accordionExample2">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button fs-5 fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseOne">
+                    Verbali superiori ai 10 punti
+                </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample2">
+                <div class="accordion-body">
+                    <table class="table table-bordered">
+                        <thead class="text-bg-secondary">
+                            <tr>
+                                <th>Cognome</th>
+                                <th>Nome</th>
+                                <th>Data Violazione</th>
+                                <th>Importo</th>
+                                <th>Punti</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Over10 v in over)
+                            {
+                                <tr>
+                                    <td>@v.Cognome</td>
+                                    <td>@v.Nome</td>
+                                    <td>@v.DataViolazione.ToShortDateString()</td>
+                                    <td>@v.Importo.ToString("C")</td>
+                                    <td>@v.DecurtamentoPunti</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="accordion" id="accordionExample3">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button fs-5 fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseOne">
+                    Verbali superiori ai 400€
+                </button>
+            </h2>
+            <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample3">
+                <div class="accordion-body">
+                    <table class="table table-bordered">
+                        <thead class="text-bg-secondary">
+                            <tr>
+                                <th>Cognome</th>
+                                <th>Nome</th>
+                                <th>Data Violazione</th>
+                                <th>Importo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (MaxiMulte v in maxi)
+                            {
+                                <tr>
+                                    <td>@v.Cognome</td>
+                                    <td>@v.Nome</td>
+                                    <td>@v.DataViolazione.ToShortDateString()</td>
+                                    <td>@v.Importo.ToString("C")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

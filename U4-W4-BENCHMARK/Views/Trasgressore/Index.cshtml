@@ -1,0 +1,46 @@
+﻿@using U4_W4_BENCHMARK.Models
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@if (TempData["OK"] != null)
+{
+    <div class="alert alert-primary w-25 mx-auto text-center m-4">@TempData["Ok"]</div>
+}
+
+<div class="d-flex w-100 min-vh-100 border border-3 border-primary">
+    <aside class="d-flex flex-column justify-content-center p-5 bg-primary">
+    </aside>
+    <section class="w-100 pb-5 mx-3">
+        <div class="d-flex justify-content-between py-3 align-items-center">
+            <h1>Anagrafica trasgressori</h1>
+            @Html.ActionLink("Nuova anagrafica", "Create", "Trasgressore", new { @class = "btn btn-primary fw-semibold h-50" })
+        </div>
+        <table class="table table-bordered">
+            <thead class="text-bg-primary">
+                <tr>
+                    <th>Nome</th>
+                    <th>Cognome</th>
+                    <th>Indirizzo</th>
+                    <th>Città</th>
+                    <th>Cap</th>
+                    <th>C.F.</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Trasgressore t in Model)
+                {
+                    <tr>
+                        <td>@t.Nome</td>
+                        <td>@t.Cognome</td>
+                        <td>@t.Indirizzo</td>
+                        <td>@t.Citta</td>
+                        <td>@t.Cap</td>
+                        <td>@t.CodiceFiscale</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </section>
+</div>
